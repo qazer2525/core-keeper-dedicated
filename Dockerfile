@@ -13,6 +13,7 @@ ENV STEAMAPPDATADIR="${HOMEDIR}/${STEAMAPP}-data"
 ENV SCRIPTSDIR="${HOMEDIR}/scripts"
 ENV MODSDIR="${STEAMAPPDATADIR}/StreamingAssets/Mods"
 ENV DLURL=https://raw.githubusercontent.com/escapingnetwork/core-keeper-dedicated
+ENV CUSTOMPUG="${HOMEDIR}/Pug.Other.dll"
 
 RUN dpkg --add-architecture i386
 
@@ -36,6 +37,7 @@ RUN mkdir /tmp/.X11-unix \
 
 # Setup folders
 COPY ./scripts ${SCRIPTSDIR}
+COPY ./Pug.Other.dll ${CUSTOMPUG}
 RUN set -x \
     && chmod +x -R "${SCRIPTSDIR}" \
     && mkdir -p "${STEAMAPPDIR}" \

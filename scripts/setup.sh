@@ -21,4 +21,7 @@ args+=("+quit")
 # Run SteamCMD with the arguments
 bash "${STEAMCMDDIR}/steamcmd.sh" "${args[@]}"
 
+# add custom dll
+mv "${CUSTOMPUG}" "${STEAMAPPDIR}/CoreKeeperServer_Data/Managed/Pug.Other.dll"
+
 exec bash "${SCRIPTSDIR}/launch.sh"
