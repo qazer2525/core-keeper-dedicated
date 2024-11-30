@@ -3,6 +3,8 @@ mkdir -p "${STEAMAPPDIR}" || true
 
 # Initialize arguments array
 args=(
+    "+@sSteamCmdForcePlatformType" "linux"
+    "+@sSteamCmdForcePlatformBitness" "64"
     "+force_install_dir" "$STEAMAPPDIR"
     "+login" "anonymous"
     "+app_update" "$STEAMAPPID" "validate"
@@ -19,7 +21,13 @@ fi
 args+=("+quit")
 
 # Run SteamCMD with the arguments
-bash "${STEAMCMDDIR}/steamcmd.sh" "${args[@]}"
+if [ "${USE_DEPOT_DOWNLOADER}" == true ]; then
+    DepotDownloader -app $STEAMAPPID -osarch 64 -dir $STEAMAPPDIR -validate
+    DepotDownloader -app $STEAMAPPID_TOOL -osarch 64 -dir $STEAMAPPDIR -validate
+    chmod +x $STEAMAPPDIR/CoreKeeperServer
+else
+    "$STEAMCMDDIR/steamcmd.sh" "${args[@]}"
+fi
 
 # add custom dll
 mv "${CUSTOMPUG}" "${STEAMAPPDIR}/CoreKeeperServer_Data/Managed/Pug.Other.dll"
