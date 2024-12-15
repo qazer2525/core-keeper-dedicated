@@ -1,9 +1,9 @@
 services:
   core-keeper:
     container_name: core-keeper-dedicated
-    image: escaping/core-keeper-dedicated
     ports:
       - "$SERVER_PORT:$SERVER_PORT/udp"
+    image: qazer25/core-keeper-dedicated-modified
     volumes:
       - server-files:/home/steam/core-keeper-dedicated
       - server-data:/home/steam/core-keeper-data

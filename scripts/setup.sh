@@ -29,7 +29,6 @@ else
     "$STEAMCMDDIR/steamcmd.sh" "${args[@]}"
 fi
 
-# add custom dll
+# add modified custom dll
 mv "${CUSTOMPUG}" "${STEAMAPPDIR}/CoreKeeperServer_Data/Managed/Pug.Other.dll"
-
 exec bash "${SCRIPTSDIR}/launch.sh"
