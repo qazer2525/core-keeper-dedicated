@@ -41,9 +41,8 @@ LogParser() {
             [[ "${DISCORD_SERVER_START_ENABLED,,}" == false ]] && return 0
             # Extract Game ID
             gameid=$(echo "$line" | awk '{print $6}')
-            result=$(bash "${SCRIPTSDIR}/check_ver.sh 1621690")
             # Build message from vars and send message
-            message=$(world_name="$WORLD_NAME" gameid="$gameid" gamever="$result" envsubst <<<"$DISCORD_SERVER_START_MESSAGE")
+            message=$(world_name="$WORLD_NAME" gameid="$gameid" envsubst <<<"$DISCORD_SERVER_START_MESSAGE")
             SendDiscordMessage "$DISCORD_SERVER_START_TITLE" "$message" "$DISCORD_SERVER_START_COLOR"
         fi
     done
