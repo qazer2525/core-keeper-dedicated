@@ -30,5 +30,5 @@ else
 fi
 
 # add modified custom dll
-cp "${CUSTOMPUG}" "${STEAMAPPDIR}/CoreKeeperServer_Data/Managed/Pug.Other.dll"
+cp -f "${CUSTOMPUG}" "${STEAMAPPDIR}/CoreKeeperServer_Data/Managed/Pug.Other.dll"
 exec bash "${SCRIPTSDIR}/launch.sh"
